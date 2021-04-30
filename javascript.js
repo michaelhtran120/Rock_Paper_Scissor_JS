@@ -3,7 +3,7 @@
     let option = ['rock','paper','scissor'];
     function computerPlay() {
         return option[Math.floor(Math.random() * option.length)];
-    }
+}
 //how to determine winner of each game.
 let computerScore = 0;
 let playerScore = 0;
@@ -12,14 +12,14 @@ function playRound(playerSelection, computerSelection) {
     if ((playerSelection === 'rock' && computerSelection === 'paper') ||
         (playerSelection === 'paper' && computerSelection === 'scissor') ||
         (playerSelection === 'scissor' && computerSelection === 'rock')) {
-            computerScore+=1 // test if ++ works
+            computerScore++;
             alert('You lose!');
             return 'You lose!';
 
      } else if ((playerSelection === 'scissor' && computerSelection === 'paper') ||
         (playerSelection === 'rock' && computerSelection === 'scissor') ||
         (playerSelection === 'paper' && computerSelection === 'rock')) {
-            playerScore+=1; // test if ++ works
+            playerScore++;
             alert('You win!')
             return 'You win!';
     } 
@@ -32,26 +32,27 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 // Who is winner function
-function whoWin () {
+function whoWon () {
     if (playerScore > computerScore) {
         alert('You are the ultimate winner!');
 
     }else if (playerScore < computerScore){
-        alert('You have lost!');
+        alert('You have ultimately lost!');
     
     }else {
         alert('Tie game!');
     }
+}
 
 // Function game
 function game() {
     let playerSelection = prompt('rock paper or scissor'); //Asking user for their decision.
-    let computerSelection = computerPlay(option); // test if 'option' is required in parenthesis
-    while (playerchoice !== ('rock' || 'paper' || 'scissor')) {
-        playerchoice = prompt('please choose rock paper or scissor');
+    let computerSelection = computerPlay(); // test if 'option' is required in parenthesis
+    while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissor') {
+        playerSelection = prompt('please choose rock paper or scissor');
     }
-    console.log(playRound());
-    }
+    console.log(playRound(playerSelection,computerSelection));
+}
 
 // loop function to play 5 round game.
 let play = true
@@ -60,5 +61,5 @@ while (play===true) {
         alert('round' + ' ' +i);
         game();
     }
-
-whoWin(playerScore,computerScore)
+    whoWon()
+}
